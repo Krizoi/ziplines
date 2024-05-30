@@ -3,7 +3,7 @@ local curves = { }
 local i = require(script.interpolation)
 -- # functions
 curves.generate = function(f, s)
-	local function remove(x: string): string
+	local function remove(x)
 		return ({x:gsub("%d", "")})[1]
 	end
 	
