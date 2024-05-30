@@ -2,8 +2,14 @@
 local curves = { }
 local i = require(script.interpolation)
 -- # functions
-curves.generate = function(t, f, s, p)
+curves.generate = function(f, s)
+	local function remove(x: string): string
+		return ({x:gsub("%d", "")})[1]
+	end
+	
+	local t = remove(s.Name)
 	local x, y, n
+	print(t)
 	x = nil
 	y = nil
 	
@@ -16,7 +22,7 @@ curves.generate = function(t, f, s, p)
 	anim.AnimationId = "http://www.roblox.com/asset/?id=17652401202"
 	
 	local clone = s:Clone()
-	clone.Parent = p
+	clone.Parent = s.Parent
 	
 	local track = nil
 	
@@ -25,15 +31,15 @@ curves.generate = function(t, f, s, p)
 	
 	local a, b, c, d
 	
-	if t == "quad" then
+	if t == "quad_" then
 		points = {clone.a.a.Position, clone.b.Position, clone.c.c.Position}
 		pp.Parent = clone.a.a
-	elseif t == "cubic" then
+	elseif t == "cubic_" then
 		points = {clone.a.a.Position, clone.b.Position, clone.c.Position, clone.d.d.Position}
 		pp.Parent = clone.a.a
 	end	
 	
-	i.bezier(points, t, f)
+	i.bezier(points, t:gsub("_", ""), f)
 	s:Destroy()
 	
 	pp.Triggered:Connect(function(plr)
