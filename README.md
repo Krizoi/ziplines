@@ -95,3 +95,6 @@ end
 Setup()
 ```
 This script demonstrates how to gradually add zipline generation coroutines, ensuring smooth integration into your game. Simply copy and paste this script into your game to implement the zipline system. Enjoy the enhanced gameplay experience!
+
+You can also check out this place:
+https://www.roblox.com/games/17593059913/zipline-testing
