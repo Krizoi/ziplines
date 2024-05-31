@@ -1,6 +1,6 @@
 # <span style="font-family: Arial; font-size: 2em;">ZIPLINES</span>
 
-<span style="font-family: Arial; font-size: 1.5em;">OVERVIEW</span><br>
+## <span style="font-family: Arial; font-size: 1.5em;">OVERVIEW</span><br>
 This system is a comprehensive suite of scripts designed for developers seeking to implement a unique zipline mechanic in their Roblox games. With this system, you can effortlessly construct bezier curves, utilizing easings such as quad or cubic for smooth interpolation. Whether you're creating an adventure game or a themed park experience, the system provides the tools you need to deliver dynamic and immersive zipline rides to your players.
 
 ## <span style="font-family: Arial; font-size: 1.5em;">FEATURES</span><br>
