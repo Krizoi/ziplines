@@ -2,14 +2,15 @@
 local curves = { }
 local i = require(script.interpolation)
 -- # functions
+local function remove(x)
+	return ({x:gsub("%d", "")})[1]
+end
+
 curves.generate = function(f, s)
-	local function remove(x)
-		return ({x:gsub("%d", "")})[1]
-	end
-	
 	local t = remove(s.Name)
+	t = t:gsub("_", "")
+	
 	local x, y, n
-	print(t)
 	x = nil
 	y = nil
 	
@@ -31,15 +32,15 @@ curves.generate = function(f, s)
 	
 	local a, b, c, d
 	
-	if t == "quad_" then
+	if t == "quad" then
 		points = {clone.a.a.Position, clone.b.Position, clone.c.c.Position}
 		pp.Parent = clone.a.a
-	elseif t == "cubic_" then
+	elseif t == "cubic" then
 		points = {clone.a.a.Position, clone.b.Position, clone.c.Position, clone.d.d.Position}
 		pp.Parent = clone.a.a
 	end	
 	
-	i.bezier(points, t:gsub("_", ""), f)
+	i.bezier(points, t, f)
 	s:Destroy()
 	
 	pp.Triggered:Connect(function(plr)
