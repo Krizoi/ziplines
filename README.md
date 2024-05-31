@@ -1,4 +1,6 @@
 # <span style="font-family: Arial; font-size: 2em;">ZIPLINES</span>
+
+<span style="font-family: Arial; font-size: 1.5em;">OVERVIEW</span><br>
 This system is a comprehensive suite of scripts designed for developers seeking to implement a unique zipline mechanic in their Roblox games. With this system, you can effortlessly construct bezier curves, utilizing easings such as quad or cubic for smooth interpolation. Whether you're creating an adventure game or a themed park experience, the system provides the tools you need to deliver dynamic and immersive zipline rides to your players.
 
 ## <span style="font-family: Arial; font-size: 1.5em;">FEATURES</span><br>
@@ -26,6 +28,9 @@ Organize our scripts by creating a new folder in 'ServerScriptService'<br>
 In 'Workspace', create folders named 'curves' and 'points'.<br>
 Inside the 'curves' folder, add subfolders such as 'zip_1' for each zipline path.<br>
 Similarly, inside the 'points' folder, create subfolders like 'quad_1' or 'cubic_1' for control points.<br>
+
+Alternatively, you can download it here:
+https://create.roblox.com/store/asset/17674353284/Zipline
 
 <strong>3. SETUP THE POINTS</strong><br>
 Populate the 'quad_1' or 'cubic_1' folders with parts or models named 'a', 'b', and 'c' (or 'd' for cubic curves).<br>
