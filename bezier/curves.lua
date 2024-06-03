@@ -6,11 +6,23 @@ local function remove(x)
 	return ({x:gsub("%d", "")})[1]
 end
 
-curves.generate = function(f, s)
+function curves:new()
+	self = {
+		id = nil,
+		m = nil
+	}
+	
+	return setmetatable(self, {__index = curves})
+end
+
+function curves:generate(s)
+	local id = self.id
+	local m = self.m
 	local t = remove(s.Name)
 	t = t:gsub("_", "")
-	
+
 	local x, y, n
+	local f = 0
 	x = nil
 	y = nil
 	
@@ -20,27 +32,24 @@ curves.generate = function(f, s)
 	pp.RequiresLineOfSight = false
 	
 	local anim = Instance.new("Animation")
-	anim.AnimationId = "http://www.roblox.com/asset/?id=17652401202"
-	
-	local clone = s:Clone()
-	clone.Parent = s.Parent
+	anim.AnimationId = "http://www.roblox.com/asset/?id=".. id
 	
 	local track = nil
 	
-	local m = 1.25
+	local clone = s:Clone()
+	clone.Parent = s.Parent
+
 	local points = { }
 	
-	local a, b, c, d
-	
 	if t == "quad" then
-		points = {clone.a.a.Position, clone.b.Position, clone.c.c.Position}
-		pp.Parent = clone.a.a
+		points = {clone.points.a.a.Position, clone.points.b.Position, clone.points.c.c.Position}
+		pp.Parent = clone.points.a.a
 	elseif t == "cubic" then
-		points = {clone.a.a.Position, clone.b.Position, clone.c.Position, clone.d.d.Position}
-		pp.Parent = clone.a.a
+		points = {clone.points.a.a.Position, clone.points.b.Position, clone.points.c.Position, clone.points.d.d.Position}
+		pp.Parent = clone.points.a.a
 	end	
 	
-	i.bezier(points, t, f)
+	i.bezier(points, t, clone)
 	s:Destroy()
 	
 	pp.Triggered:Connect(function(plr)
@@ -48,8 +57,10 @@ curves.generate = function(f, s)
 		
 		local h = plr.Character:WaitForChild("Humanoid")
 		local r = plr.Character:WaitForChild("HumanoidRootPart")
+		local l = pp.Parent.Parent.Parent
 		
 		track = h.Animator:LoadAnimation(anim)
+		
 		h.AutoRotate = false
 		r.Anchored = true
 		
@@ -58,8 +69,8 @@ curves.generate = function(f, s)
 		track:Play()
 		
 		local alpha =  .01
+		local parts = clone.curve:GetChildren()
 		
-		local parts = f:GetChildren()
 		for i = 1, #parts do
 			x = parts[i]
 			y = parts[i + 1]
@@ -76,7 +87,7 @@ curves.generate = function(f, s)
 			r.CFrame = new
 			
 			game:GetService("RunService").Heartbeat:Wait()
-			task.wait(0.03)
+			task.wait(0.0325)
 			
 		end
 		
